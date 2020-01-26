@@ -7,8 +7,27 @@ class TipoProdutoModel
 		$this->db = $db;
 	}
 
-
 	public function getAllTiposProduto(){
 		return $this->db->query('SELECT * FROM tipos');
+	}
+
+	public function cadastrarTipoProduto($tipoProduto){
+		$insercao = $this->db->prepare("INSERT INTO tipos (nome, imposto) VALUES (:nome, :imposto)");
+		$insercao->bindParam(':nome', $nome);
+		$insercao->bindParam(':imposto', $imposto);
+
+		// insert one row
+		$nome = $tipoProduto['nome'];
+		$imposto = $tipoProduto['imposto'];
+		return $insercao->execute();
+	}
+
+	public function removerTipoProduto($id){
+		$remocao = $this->db->prepare("DELETE FROM tipos  WHERE id = :id");
+		$remocao->bindParam(':id', $id);
+
+		// insert one row
+		$id = $id;
+		return $remocao->execute();	
 	}
 }

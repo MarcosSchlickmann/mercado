@@ -10,11 +10,35 @@ $db = new PDO(
 require 'vendor/autoload.php';
 include 'models/TipoProdutoModel.php';
 
-$tipoProduto = new TipoProdutoModel($db);
-$listaTiposProduto = $tipoProduto->getAllTiposProduto();
 
 $templates = new League\Plates\Engine('templates');
-echo $templates->render('tipo_produto/tipo_produto', [
-	'listaTiposProduto' => $listaTiposProduto
-]);
+
+$tipoProduto = new TipoProdutoModel($db);
+
+if(isset($_GET['acao']) && $_GET['acao'] == 'cadastrar'){
+	if(!$_POST){
+		echo $templates->render('tipo_produto/cadastrar_tipo_produto');
+	}elseif($tipoProduto->cadastrarTipoProduto($_POST)){
+		$listaTiposProduto = $tipoProduto->getAllTiposProduto();
+		echo $templates->render('tipo_produto/listar_tipo_produto', [
+			'listaTiposProduto' => $listaTiposProduto
+		]);
+	}
+}
+
+if(isset($_GET['acao']) && $_GET['acao'] == 'remover' && $_POST['id']){
+	if($tipoProduto->removerTipoProduto($_POST['id'])){
+		$listaTiposProduto = $tipoProduto->getAllTiposProduto();
+		echo $templates->render('tipo_produto/listar_tipo_produto', [
+			'listaTiposProduto' => $listaTiposProduto
+		]);	
+	}
+}
+
+if(!isset($_GET['acao'])){
+	$listaTiposProduto = $tipoProduto->getAllTiposProduto();
+	echo $templates->render('tipo_produto/listar_tipo_produto', [
+		'listaTiposProduto' => $listaTiposProduto
+	]);
+}
 ?>
