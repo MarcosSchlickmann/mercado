@@ -18,21 +18,15 @@ $tipoProduto = new TipoProdutoModel($db);
 if(isset($_GET['acao']) && $_GET['acao'] == 'cadastrar'){
 	if(!$_POST){
 		echo $templates->render('tipo_produto/cadastrar_tipo_produto');
-	}elseif($tipoProduto->cadastrarTipoProduto($_POST)){
-		$listaTiposProduto = $tipoProduto->getAllTiposProduto();
-		echo $templates->render('tipo_produto/listar_tipo_produto', [
-			'listaTiposProduto' => $listaTiposProduto
-		]);
+	}else{
+		$tipoProduto->cadastrarTipoProduto($_POST);
+		header('location: ' . $_SERVER['PHP_SELF']);
 	}
 }
 
 if(isset($_GET['acao']) && $_GET['acao'] == 'remover' && $_POST['id']){
-	if($tipoProduto->removerTipoProduto($_POST['id'])){
-		$listaTiposProduto = $tipoProduto->getAllTiposProduto();
-		echo $templates->render('tipo_produto/listar_tipo_produto', [
-			'listaTiposProduto' => $listaTiposProduto
-		]);	
-	}
+	$tipoProduto->removerTipoProduto($_POST['id']);
+	header('location: ' . $_SERVER['PHP_SELF']);
 }
 
 if(!isset($_GET['acao'])){
