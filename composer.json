@@ -1,6 +1,5 @@
 {
     "require": {
-        "league/plates": "^3.3",
-        "fuelphp/validation": "^0.1.1"
+        "league/plates": "^3.3"
     }
 }

@@ -4,52 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7b769253c60707d5f7cb804798bfc2b9",
+    "content-hash": "8d66baa2c76613c389165111a19784c0",
     "packages": [
-        {
-            "name": "fuelphp/validation",
-            "version": "0.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/fuelphp/validation.git",
-                "reference": "2ae62054c6fdb191542ac6e872bcca610a7b46f9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/fuelphp/validation/zipball/2ae62054c6fdb191542ac6e872bcca610a7b46f9",
-                "reference": "2ae62054c6fdb191542ac6e872bcca610a7b46f9",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "require-dev": {
-                "codeception/codeception": "~2.0",
-                "codeception/mockery-module": "dev-master"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Fuel\\Validation\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "FuelPHP Development Team",
-                    "email": "team@fuelphp.com"
-                }
-            ],
-            "description": ".",
-            "homepage": "https://github.com/fuelphp/validation",
-            "keywords": [
-                "validation"
-            ],
-            "time": "2016-11-25T16:35:22+00:00"
-        },
         {
             "name": "league/plates",
             "version": "3.3.0",
