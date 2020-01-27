@@ -69,12 +69,17 @@ class VendaModel
 		return $insercao->errorInfo();
 	}
 
-	public function removerProduto($produto_id){
-		$remocao = $this->db->prepare("DELETE FROM produtos WHERE id = :id");
-		$remocao->bindParam(':id', $id);
+	public function removerVenda($id){
+		$remocao_vendas_produtos = $this->db->prepare("DELETE FROM vendas_produtos WHERE vendas_produtos.venda_id = ?");
+		if(!$remocao_vendas_produtos->execute([$id]))
+			return $remocao_vendas_produtos->errorInfo();
 
-		// insert one row
-		$id = $produto_id;
-		return $remocao->execute();	
+		$remocao_vendas = $this->db->prepare("DELETE FROM vendas WHERE id = ?");
+		$remocao_vendas->execute([$id]);
+		
+		if(!$remocao_vendas->execute([$id]))
+			return $remocao_vendas->errorInfo();
+
+		return true;
 	}
 }

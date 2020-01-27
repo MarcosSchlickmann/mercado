@@ -25,9 +25,8 @@ class TipoProdutoModel
 	public function removerTipoProduto($id){
 		$remocao = $this->db->prepare("DELETE FROM tipos  WHERE id = :id");
 		$remocao->bindParam(':id', $id);
-
-		// insert one row
 		$id = $id;
-		return $remocao->execute();	
+		$remocao->execute();	
+		return $remocao->errorInfo();
 	}
 }

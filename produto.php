@@ -31,9 +31,7 @@ if(isset($_GET['acao']) && $_GET['acao'] == 'cadastrar'){
 
 if(isset($_GET['acao']) && $_GET['acao'] == 'remover' && $_POST['id']){
 	$removeu = $produto->removerProduto($_POST['id']);
-	if($removeu){
-		header('location: ' . $_SERVER['PHP_SELF']);
-	}
+	header('location: ' . $_SERVER['PHP_SELF']);
 }
 
 if(!isset($_GET['acao'])){
